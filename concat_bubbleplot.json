@@ -1,0 +1,138 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 200,
+  "width": 300,
+  "background": "#f8ffec",
+  "title": [
+    "🍞Share of Dietary Energy from Carbohydrates vs GDP",
+    "per Capita🥔"
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/brittney01/vegetable_fruit_vis2_jinghan/main/cereal_diet_GDP.csv"
+  },
+  "params": [
+    {
+      "name": "Population_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 100000000,
+        "step": 1000000,
+        "name": "Minimum Population: "
+      }
+    },
+    {
+      "name": "Year",
+      "value": 2011,
+      "bind": {
+        "input": "range",
+        "min": 1992,
+        "max": 2011,
+        "step": 1,
+        "name": "Select the year:"
+      }
+    },
+    {
+      "name": "Income_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Low income",
+          "Lower middle income",
+          "Upper middle income",
+          "High income"
+        ],
+        "labels": [
+          "Show All",
+          "Low Income",
+          "Lower Middle Income",
+          "Upper Middle Income",
+          "High Income"
+        ],
+        "name": "Income Level Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Year == Year"},
+    {"filter": "datum.Cereal_energy_share > 0"},
+    {"filter": "datum.GDP > 0"},
+    {"filter": "datum.Population > Population_Above"},
+    {
+      "filter": "Income_selection == null || datum.Income_group == Income_selection"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "GDP",
+      "type": "quantitative",
+      "title": "GDP per capita",
+      "scale": {"type": "log", "domain": [500, 60000]},
+      "axis": {"tickCount": 10}
+    },
+    "y": {
+      "field": "Cereal_energy_share",
+      "type": "quantitative",
+      "axis": {"title": "Carbohydrate Calories % of Diet"}
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Population",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1000000, 10000000, 50000000, 100000000, 500000000],
+            "range": [10, 50, 150, 200, 300, 400]
+          },
+          "legend": {"format": ".1s"}
+        },
+        "color": {
+          "field": "Income_group",
+          "type": "nominal",
+          "title": "Income Level",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Low income",
+              "Lower middle income",
+              "Upper middle income",
+              "High income"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628"
+            ]
+          }
+        },
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Income_group", "type": "nominal", "title": "Income Level"},
+          {"field": "GDP", "type": "quantitative", "format": ","},
+          {"field": "Population", "type": "quantitative", "format": ","},
+          {
+            "field": "Cereal_energy_share",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Carbohydrate % of Dietary Energy"
+          },
+          {"field": "Country", "type": "nominal"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false},
+    "font": "Helvetica"
+  }
+}
