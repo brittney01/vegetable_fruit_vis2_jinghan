@@ -1,0 +1,65 @@
+﻿Indicator,Year,Cause,Value
+Low Fruits,2010, Heart Disease , 639228 
+Low Fruits,2010, Stroke , 1307147 
+Low Fruits,2010, Cancer , 490849 
+Low Fruits,2010, Diabetes , 0   
+Low Fruits,2018, Heart Disease , 752633 
+Low Fruits,2018, Stroke , 1475888 
+Low Fruits,2018, Cancer , 595803 
+Low Fruits,2018, Diabetes , 0   
+Low Whole Grains,2010, Heart Disease , 1133264 
+Low Whole Grains,2010, Stroke , 0   
+Low Whole Grains,2010, Cancer , 789882 
+Low Whole Grains,2010, Diabetes , 0   
+Low Whole Grains,2018, Heart Disease , 1347022 
+Low Whole Grains,2018, Stroke , 0   
+Low Whole Grains,2018, Cancer , 925666 
+Low Whole Grains,2018, Diabetes , 0   
+Low Vegetables,2010, Heart Disease , 917637 
+Low Vegetables,2010, Stroke , 0   
+Low Vegetables,2010, Cancer , 573338 
+Low Vegetables,2010, Diabetes , 0   
+Low Vegetables,2018, Heart Disease , 1036014 
+Low Vegetables,2018, Stroke , 0   
+Low Vegetables,2018, Cancer , 629195 
+Low Vegetables,2018, Diabetes , 0   
+Low Legumes,2010, Heart Disease , 1310829 
+Low Legumes,2010, Stroke , 0   
+Low Legumes,2010, Cancer , 0   
+Low Legumes,2010, Diabetes , 0   
+Low Legumes,2018, Heart Disease , 1537388 
+Low Legumes,2018, Stroke , 0   
+Low Legumes,2018, Cancer , 0   
+Low Legumes,2018, Diabetes , 0   
+Low Nuts and Seeds,2010, Heart Disease , 1036934 
+Low Nuts and Seeds,2010, Stroke , 0   
+Low Nuts and Seeds,2010, Cancer , 0   
+Low Nuts and Seeds,2010, Diabetes , 0   
+Low Nuts and Seeds,2018, Heart Disease , 1032341 
+Low Nuts and Seeds,2018, Stroke , 0   
+Low Nuts and Seeds,2018, Cancer , 0   
+Low Nuts and Seeds,2018, Diabetes , 0   
+High Red Meat,2010, Heart Disease , 439662 
+High Red Meat,2010, Stroke , 277833 
+High Red Meat,2010, Cancer , 44605 
+High Red Meat,2010, Diabetes , 65466 
+High Red Meat,2018, Heart Disease , 518016 
+High Red Meat,2018, Stroke , 319674 
+High Red Meat,2018, Cancer , 56825 
+High Red Meat,2018, Diabetes , 85360 
+High Processed Meat,2010, Heart Disease , 514523 
+High Processed Meat,2010, Stroke , 170488 
+High Processed Meat,2010, Cancer , 39755 
+High Processed Meat,2010, Diabetes , 71238 
+High Processed Meat,2018, Heart Disease , 558603 
+High Processed Meat,2018, Stroke , 185868 
+High Processed Meat,2018, Cancer , 46106 
+High Processed Meat,2018, Diabetes , 93418 
+High Sugary Drinks,2010, Heart Disease , 178232 
+High Sugary Drinks,2010, Stroke , 0   
+High Sugary Drinks,2010, Cancer , 0   
+High Sugary Drinks,2010, Diabetes , 64947 
+High Sugary Drinks,2018, Heart Disease , 208977 
+High Sugary Drinks,2018, Stroke , 0   
+High Sugary Drinks,2018, Cancer , 0   
+High Sugary Drinks,2018, Diabetes , 82553 
