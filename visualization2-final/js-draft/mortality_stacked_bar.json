@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#fff7bc",
+  "width": 30,
+  "height": 200,
+  "params": [
+    {
+      "name": "legend_selection",
+      "select": {"type": "point", "fields": ["Cause"]},
+      "bind": "legend"
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/brittney01/vegetable_fruit_vis2_jinghan/main/stacked_bar_data.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "column": {
+      "field": "Indicator",
+      "type": "ordinal",
+      "title": "",
+      "header": {
+        "labelFontSize": 10,
+        "labelAngle": 60,
+        "titleAngle": 0,
+        "labelOrient": "top",
+        "labelPadding": -50
+      }
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Value",
+      "type": "quantitative",
+      "axis": {"title": "Deaths", "grid": false}
+    },
+    "x": {"field": "Year", "type": "nominal", "axis": {"title": ""}},
+    "tooltip": [
+      {"field": "Cause", "type": "nominal", "title": "Cause"},
+      {
+        "field": "Value",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Number of Deaths"
+      }
+    ],
+    "color": {
+      "field": "Cause",
+      "type": "nominal",
+      "legend": {"orient": "bottom"},
+      "scale": {"range": ["#4e79a7", "#ff9da7", "#dabeed", "#78c679"]}
+    },
+    "opacity": {
+      "condition": {"param": "legend_selection", "value": 1},
+      "value": 0.1
+    }
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"domainWidth": 1},
+    "font": "Helvetica"
+  }
+}

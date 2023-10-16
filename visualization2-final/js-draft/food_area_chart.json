@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {"resize": true},
+  "data": {
+    "url": "https://raw.githubusercontent.com/brittney01/vegetable_fruit_vis2_jinghan/main/food_consumption_merged.csv",
+    "format": {"parse": {"Kilocalories": "number"}}
+  },
+  "title": "Normalised Food Type Breakdown by Continent",
+  "background": "#fff7bc",
+  "params": [
+    {
+      "name": "Regions",
+      "value": "Europe",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Europe",
+          "Eastern Mediterranean",
+          "Africa",
+          "South-East Asia",
+          "Americas",
+          "Western Pacific"
+        ],
+        "name": "Region Selection: "
+      }
+    },
+    {
+      "name": "legend_selection",
+      "select": {"type": "point", "fields": ["Food_Type"]},
+      "bind": "legend"
+    }
+  ],
+  "transform": [{"filter": "datum.Region == Regions"}],
+  "mark": "area",
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal"},
+    "y": {
+      "aggregate": "mean",
+      "field": "Kilocalories",
+      "type": "quantitative",
+      "title": "Kilocalorie Distribution per Day",
+      "stack": "normalize"
+    },
+    "tooltip": [
+      {"field": "Food_Type", "type": "nominal", "title": "Food Type"},
+      {
+        "field": "mean_Kilocalories",
+        "type": "quantitative",
+        "title": "Kilocalories per day",
+        "format": ".0f"
+      }
+    ],
+    "color": {
+      "field": "Food_Type",
+      "scale": {
+        "range": [
+          "#ccece6",
+          "#fdd49e",
+          "#ffeda0",
+          "#f768a1",
+          "#bd0026",
+          "#a6bddb",
+          "#bc885d",
+          "#ea9999",
+          "#969696",
+          "#4eb3d3"
+        ]
+      },
+      "title": "Food Type",
+      "legend": {"align": "right"}
+    },
+    "opacity": {
+      "condition": {"param": "legend_selection", "value": 1},
+      "value": 0.1
+    }
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false},
+    "font": "Helvetica"
+  }
+}

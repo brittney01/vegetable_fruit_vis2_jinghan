@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple donut chart with embedded data.",
+  "view": {"stroke": null, "fill": null},
+  "background": "#fff7bc",
+  "data": {
+    "values": [
+      {"category": "Carbohydrates", "value": 34},
+      {"category": "Plant Protein", "value": 44.04},
+      {"category": "Fats & Sugars", "value": 9.8},
+      {"category": "Animal Protein", "value": 12.16}
+    ]
+  },
+  "mark": {"type": "arc", "tooltip": true, "innerRadius": 70},
+  "encoding": {
+    "theta": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Percentage Intake (%)",
+      "sort": [
+        "Carbohydrates",
+        "Plant Protein",
+        "Animal Protein",
+        "Fats & Sugars"
+      ]
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Food Type",
+      "legend": null,
+      "scale": {"range": ["#d95f0e", "#fec44f", "#fa9fb5", "#4292c6"]}
+    }
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false},
+    "font": "Helvetica"
+  }
+}

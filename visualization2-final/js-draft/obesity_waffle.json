@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/brittney01/vegetable_fruit_vis2_jinghan/main/obesity_stats.csv"
+  },
+  "title": "Percentage of Population that is Obese or Overweight",
+  "view": {"fill": null, "stroke": null},
+  "background": "#fff7bc",
+  "width": 250,
+  "height": 250,
+  "params": [
+    {
+      "name": "legend_selection",
+      "select": {"type": "point", "fields": ["Class"]},
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "circle",
+    "filled": true,
+    "tooltip": true,
+    "stroke": "black",
+    "strokeWidth": 0.7
+  },
+  "encoding": {
+    "x": {"field": "col", "type": "ordinal", "axis": null, "sort": "-y"},
+    "y": {"field": "row", "type": "ordinal", "axis": null, "sort": "-x"},
+    "color": {
+      "field": "Class",
+      "type": "nominal",
+      "scale": {"range": ["#9ecae1", "#FF5733", "#ffc621"]},
+      "legend": {
+        "orient": "right",
+        "offset": 15,
+        "labelOffset": 3,
+        "titlePadding": 10,
+        "title": null
+      }
+    },
+    "opacity": {
+      "condition": {"param": "legend_selection", "value": 1},
+      "value": 0.1
+    },
+    "size": {"value": 241},
+    "tooltip": [
+      {"field": "Class", "type": "nominal"},
+      {"field": "Percentage", "type": "quantitative"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false},
+    "font": "Helvetica"
+  }
+}
