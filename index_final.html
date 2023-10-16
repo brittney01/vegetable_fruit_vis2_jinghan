@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>World Diet Visualization</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+  
+  <meta charset="UTF-8">
+
+  <style>
+    h1 {text-align: center;
+      font-family: 'Abril Fatface', serif;
+      font-weight: 900;
+      font-size: 80px;}
+
+  </style>
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style = "margin-right: 30px; margin-bottom: -55px; ">
+        <h1> &#129386; DIET IN WORLD &#129367;</h1>
+      </div>
+      <div class="pure-u-1-2">
+        <div style = " ">
+        <p>Food is both key to <span class="thicker">nurturing human health</span>and a major global challenge. Dietary habits vary geographically and culturally and have a profound impact on health, and <span class="thicker">poor diets</span> are strongly associated with <span class="thicker">chronic diseases</span>. it's crucial to comprehend regional dietary patterns, enhance diet quality, support sustainable food production, and foster global cooperation.</p>
+        </div>
+      </div>
+      <div class="pure-u-1-2" >
+        <div style="padding-left:30px">
+          <p> To disseminate the importance of diet, this tool provides a series of visualisations that depict <span class="thicker">diet copmposition across the world</span>, the <span class="thicker">impact of wealth on diet</span> and a <span class="thicker">dietary implications on health</span>.</p>
+        </div>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    
+    <div class="pure-g" >
+      <div class="pure-u-1-1">
+        <h2>What is the recommended diet?</h2>
+      </div>
+      <div class="pure-u-3-5">
+        <div class="description-left" style = "margin-right: 50px">
+          <p>In 2019, the <span class="thicker">EAT-Lancet commission on healthy diets</span> released a report describing the composition
+            of a <span class="thicker">scientifically supported healthy 2500 calorie adult diet</span>. Their target diet was divided into  <b style="color: #4292c6" class="bigger">plant protein</b>,
+            <b style="color: #d95f0e" class="bigger">animal protein</b>, <b style="color: #fec44f" class="bigger"> carbohydrates</b> as well as <b style="color: #fa9fb5" class="bigger"> fats and sugars</b>. Although the ideal diet varies from person to person, they aim 
+          to quantify a universal healthy diet that is also <span class="thicker">environmentally sustainable</span>.</p>
+        </div>
+      </div>
+      <div class="pure-u-1-5">
+        <img src="fork-and-knife-black-4.png" class="absolute">
+        
+
+      </div>
+      <div class="pure-u-1-5" style = "margin-bottom: -50px">
+        
+        <div id="vis1" style="margin-top: -30px; margin-left: -90px"></div>
+        <h2 class = "text">Total <br> 2500 kcal Daily <br> Intake </h2>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <p><i>Use the selections below to see how your country might compare
+          to the <span class="thicker">EAT-Lancet healthy diet</span> and to other countries!</i></p>
+        <div id="vis3" class="vis-container2" style = "margin-left: 40px"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+
+        <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <h2>What do different countries eat?</h2>
+          <p>A further breakdown of diet by region is provided on the right to show changes over time. Over time, <span class=" thicker">cereals and grains</span> have consistently accounted for the largest share in each region, with consumption of <span class=" thicker">fats and oils</span> and <span class=" thicker">processed meats</span> becoming increasingly popular and accessible, and other <span class=" thicker">roots and tubers</span> remaining flat in demand. Consumption of these products has changed with the times.
+          </p>
+          
+
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis2" class="vis-container2" style = "margin-left: 50px; margin-top: 20px"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2>Does a country's wealth effect the diet of its population?</h2>
+      </div>
+      <div class="pure-u-1-2" >
+        <p>It is evident below that there are clear divisions in diet depending on a country's wealth. 
+          <b style="color: #e15759" class="bigger"> High income</b> and <b style="color: #f28e2b" class="bigger"> upper middle income</b> countries have access to expensive commodities, </p>
+      </div>
+      <div class="pure-u-1-2" style="padding-left:0px"> 
+        <p> including meat-based proteins whereas economically poor countries (<b style="color: #76b7b2" class="bigger">low income</b> 
+           and <b style="color: #b07aa1" class="bigger"> low middle income</b>) rely
+        more on sustainable grains for dietary supplementation.  </p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="vis6" class="vis-container2" ></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis7" class="vis-container2" style = "margin-left: 35px" ></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>Diet and Its Impact on Global Health</h2>
+        </div>
+      <div class="pure-u-1-2">
+        <p><span class="thicker">Diet</span> plays a key role in global health and has a profound impact on the development of <span class="thicker" style="color: #FF5733" >obesity</span> and <span class="thicker" style="color: #9e9ac8">chronic diseases</span>. Excessive intake of foods <span class="thicker">high in calories, fat and sugar</span> is one of the major contributing factors to <span class="thicker" style="color: #FF5733" >obesity</span>, which is strongly associated with a wide range of chronic diseases. These include <span class="thicker">cardiovascular disease, diabetes, hypertension, certain cancers, and osteoporosis</span>.</p>
+      </div>
+      <div class="pure-u-1-2" style = "margin-top: 00px">
+        <p>Thealth agencies and governments around the world have emphasized the importance of <span class="thicker">healthy eating</span> by encouraging people to reduce their intake of foods high in salt, fat and sugar, increase consumption of <span class="thicker">vegetables, fruits and whole grains</span>, and maintain a moderate body weight. These measures have helped to reduce <span class="thicker" style="color: #FF5733" >obesity</span> rates, improve global health and reduce the risk of <span class="thicker" style="color: #9e9ac8">hronic diseasec</span>.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+  
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+          <p> <span class="thicker" style="color: #FF5733" >Obesity</span> is considered a <span class="thicker">rapidly rising pandemic</span>, where alarmingly <span class="thicker">1.9 billion adults (39%)</span> worldwide were considered <b style="color: #EEB51A" class="bigger">overweight</b>
+            with <span class="thicker">650 million (13%)</span> of those considered <b style="color: #FF5733" class="bigger">obese</b> in 2016. 
+            A <span class="thicker">body mass index (BMI) over 25</span> is considered <b style="color: #EEB51A
+            " class="bigger">overweight</b>, and a <span class="thicker">BMI over 30</span> is considered 
+            <b style="color: #FF5733" class="bigger">obese</b>. </p>
+            <p> The choropleth map below demonstrates the distribution of <b style="color: #FF5733" class="bigger">obesity</b> and <b style="color: #EEB51A" class="bigger">overweightness</b>, across the world, over time.
+              At the moment, more people are <b style="color: #FF5733" class="bigger">obese</b> than underweight in every region except <span class="thicker">sub-Saharan Africa and Asia</span>. 
+            Interestingly, the regions with the highest levels of <b style="color: #FF5733" class="bigger">obesity</b> are located in <span class="thicker">small Pacific Island States</span> due to a high amount of imported 
+          foods high in <span class="thicker">salt</span> and <b style="color: #ffc621" class="bigger">fat</b>.</p>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis8" class="vis-container" style = "margin-left: 30px; margin-top: 14px"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div id="vis9" class="center" ></div>
+
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+      <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1" style = "margin-right: 30px">
+        <h2>Diseases Caused by Poor Diet</h2>
+      </div>
+      
+      <div class="pure-u-1-3">
+          <p>It is easy to see that inappropriate diets are most commonly associated with the incidence of <b style="color: #dabeed" class="bigger">heart disease</b>, due to the close relationship between diet and blood pressure, ionic balance in the body and circulatory health. <span class="thicker">Processed meats and red meats</span>, for example, are high in fat, and their overconsumption can lead to a buildup of fat in the arteries and veins, which increases the risk of heart disease and stroke.</p>
+             <p>In addition, diet is strongly associated with the incidence of <b style="color: #4e79a7" class="bigger">cancer</b>, <b style="color: #ff9da7" class="bigger">diabetes</b> and <b style="color: #78c679" class="bigger">stroke</b>. The risk of <b style="color: #4e79a7" class="bigger">cancer</b> is influenced by diets <span class="thicker">high in sugar, fat and fiber</span>, particularly colon, breast and stomach cancers. The risk of <b style="color: #ff9da7" class="bigger">diabetes</b> is influenced by diets <span class="thicker">high in sugar and carbohydrates</span>, which may lead to weight gain and insulin resistance. In addition, unhealthy eating habits can contribute to risk factors for <b style="color: #78c679" class="bigger">stroke</b>, as <span class="thicker">high blood pressure and weight</span> gain are among the major risk factors for <b style="color: #78c679" class="bigger">stroke</b>.</p>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="vis10" class="vis-container2" style = "margin-left: 80px"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualisation was created by <a href=" https://brittney01.github.io/vegetable_fruit_vis2_jinghan/" target="_blank">Jinghan Zhang</a>. Data and information was sourced from <a href="https://ourworldindata.org/obesity" target="_blank">Our World In Data</a>, 
+          <a href="https://www.fao.org/faostat/en/" target="_blank">FAOSTAT</a> and <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank">WHO</a>.</href></p>
+      </div>
+    </div>
+
+
+
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "./js-draft/recommended_diet_piechart.json";
+    var specVis2 = "./js-draft/food_area_chart.json";
+    var specVis3 = "./js-draft/calorie_butterfly_chart.json";
+    var specVis6 = "./js-draft/concat_bubbleplot.json";
+    var specVis7 = "./js-draft/protein_scatter_plot.json";
+    var specVis8 = "./js-draft/obesity_waffle.json";
+    var specVis9 = "./js-draft/obesity_map.json";
+    var specVis10 = "./js-draft/mortality_stacked_bar.json";
+
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis6', specVis6, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis7', specVis7, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis8', specVis8, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis9', specVis9, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis10', specVis10, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>
